@@ -21,7 +21,13 @@ if (OS_IOS) {
 	baseUri = 'httl://10.0.2.2:8080'
 }
 
+function connectWithBaseAuth(callback) {
+	
+}
+
 function doClick(e) {
+	
+	// Create the HTTPClient
 	var xhr = Ti.Network.createHTTPClient({
 		onload : function(e) {
 			console.log(this.responseText);
@@ -31,8 +37,10 @@ function doClick(e) {
 		}
 	});
 
+	path = '/the/rest/of/your/address';
+	
 	xhr.validatesSecureCertificate = true;
-	xhr.open('POST', baseUri + '/the/rest/of/your/address');
+	xhr.open('POST', baseUri + path);
 
 	authstr = 'Basic ' + Titanium.Utils.base64encode(username + ':' + password);
 	xhr.setRequestHeader('Authorization', authstr);
